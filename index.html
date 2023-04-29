@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tick Tick Boom</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pinyon Script"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Special Elite"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.0.2/dist/simpleParallax.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="whitespace"></div>
+      <div class="row">
+        <div class="col-lg-3 txt tick">
+          <h1 style="font-size: 60px">tick,</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 tick2">
+          <h1 style="font-size: 60px">tick...</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 txt boom">
+          <h1 style="font-size: 80px">BOOM!</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 txt picture">
+          <h1 style="font-size: 80px; font-family: Pinyon Script">
+            for Best Picture
+          </h1>
+        </div>
+      </div>
+      <div class="whitespace"></div>
+      <div class="row">
+        <div class="col-lg-4 img one">
+          <img src="01.jpeg" class="ione" alt="" />
+        </div>
+
+        <div class="col-lg-3 txt text-1">
+          <h1>Andrew Garfield's performance</h1>
+        </div>
+      </div>
+      <div class="whitespace"></div>
+      <div class="row">
+        <div class="col-lg-8 txt text-2">
+          <h1>
+            the writing realistically represented <br />the life of the artist
+            and <br />universal themes of the human <br />experience
+          </h1>
+        </div>
+
+        <div class="col-lg-4 img two" style="outline: 2px solid #ccc; background: #ccc;">
+          <p class="typing" style="margin-top: 10px;font-family: Special Elite; height: 350px; font-size: 20px"></p>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 img three">
+            <img src="left1.png" class="ithree" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 img four">
+          <img src="07.jpg" class="ifour" alt="" />
+        </div>
+
+        <div class="col-lg-3 txt text-3">
+          <h1>whitespace is like air.</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 txt text-4">
+          <h1>
+            it is necessary for <br />
+            a design to breathe.
+          </h1>
+        </div>
+
+        <div class="col-lg-4 img five">
+          <img src="10.jpg" class="ifive" alt="" />
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 img six">
+            <img src="left2.png" class="isix" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 1000px; background-color: red; font-size: 36px">
+      Scroll Up and Down this page to see the parallax scrolling effect. This
+      div is just here to enable scrolling. Tip: Try to remove the
+      background-attachment property to remove the scrolling effect.
+    </div>
+    <script type="text/javascript">
+      var image = document.getElementsByClassName("ione");
+      new simpleParallax(image, {
+        scale: 1.4,
+      });
+
+      var image = document.getElementsByClassName("itwo");
+      new simpleParallax(image, {
+        scale: 1.6,
+        orientation: "left",
+      });
+
+      var image = document.getElementsByClassName("ithree");
+      new simpleParallax(image, {
+        scale: 1.6,
+        orientation: "right",
+      });
+
+      var image = document.getElementsByClassName("ifour");
+      new simpleParallax(image, {
+        scale: 1.6,
+      });
+
+      var image = document.getElementsByClassName("ifive");
+      new simpleParallax(image, {
+        scale: 1.6,
+        orientation: "right",
+      });
+
+      var image = document.getElementsByClassName("isix");
+      new simpleParallax(image, {
+        scale: 1.6,
+        orientation: "left",
+      });
+
+      var fade_in_div = document.querySelector(".tick");
+      var fade_in_div_2 = document.querySelector(".tick2");
+      var fade_in_div_3 = document.querySelector(".boom");
+      var fade_in_div_4 = document.querySelector(".picture");
+      var last_scroll_pos = 0;
+      var is_scrolling_down = true;
+      var tick_has_faded_in = false;
+      var tick2_has_faded_in = false;
+      var boom_has_faded_in = false;
+      var picture_has_faded_in = false;
+
+      function wait(ms) {
+        var start = new Date().getTime();
+        var end = start;
+        while (end < start + ms) {
+          end = new Date().getTime();
+        }
+      }
+
+      window.addEventListener("scroll", function () {
+        var rect = fade_in_div_4.getBoundingClientRect();
+        var scroll_pos = window.scrollY;
+        if (scroll_pos < 800) {
+          if (scroll_pos > last_scroll_pos) {
+            // scrolling down
+            if (!tick_has_faded_in) {
+              fade_in_div.style.opacity = 1;
+              tick_has_faded_in = true;
+            } else if (!tick2_has_faded_in) {
+              wait(500);
+              fade_in_div_2.style.opacity = 1;
+              tick2_has_faded_in = true;
+            } else if (!boom_has_faded_in) {
+              wait(500);
+              fade_in_div_3.style.opacity = 1;
+              boom_has_faded_in = true;
+            } else {
+              wait(500);
+              fade_in_div_4.style.opacity = 1;
+              picture_has_faded_in = true;
+            }
+            is_scrolling_down = true;
+          } else {
+            // scrolling up
+            is_scrolling_down = false;
+          }
+        }
+        last_scroll_pos = scroll_pos;
+      });
+
+      setInterval(function () {
+        if (!is_scrolling_down) {
+          if (picture_has_faded_in) {
+            fade_in_div_4.style.opacity = 0;
+            picture_has_faded_in = false;
+          } else if (boom_has_faded_in) {
+            fade_in_div_3.style.opacity = 0;
+            boom_has_faded_in = false;
+          } else if (tick2_has_faded_in) {
+            fade_in_div_2.style.opacity = 0;
+            tick2_has_faded_in = false;
+          } else {
+            tick_has_faded_in = false;
+            fade_in_div.style.opacity = 0;
+          }
+        }
+      }, 100);
+
+      const message = ["I can't do it again, Mike. I can't stomach five more years of waiting tables, five more years of writing things that no one will ever see while Broadway just churns out mega-musicals without a hint of anything original or interesting or, God forbid, something to actually say about the world!"];
+      const speed = 100;
+      let textPosition = 0;
+      function typewriter() {
+        document.querySelector(".typing").innerHTML =
+          message[0].substring(0, textPosition) + "<span>\u25AE</span>";
+        if (textPosition++ != message[0].length) setTimeout(typewriter, speed);
+      }
+
+      window.addEventListener("load", typewriter);
+
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fixed Image with Scrolling Text</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		.background-image {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url("https://wallpaperaccess.com/full/7866929.jpg") no-repeat center center fixed;
+			background-size: cover;
+			z-index: -1;
+		}
+		.container {
+			height: 2000px;
+			background-color: #fcf;
+			color: #000;
+			padding: 50px;
+			box-sizing: border-box;
+			overflow-y: scroll;
+			position: relative;
+			z-index: 1;
+		}
+		#tick,
+		#boom {
+			position: absolute;
+			bottom: -50px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: #fff;
+			font-size: 5em;
+			opacity: 0;
+			transition: all 1s ease;
+		}
+		#tick.visible,
+		#boom.visible {
+			opacity: 1;
+			bottom: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="background-image"></div>
+	<div class="container">
+		<div id="tick">tick</div>
+		<div id="boom">boom</div>
+		<p id="limitedContent">Sed sit amet laoreet turpis. Aliquam erat volutpat. Ut bibendum gravida enim, sed hendrerit libero porta sit amet.</p>
+		<p>Pellentesque efficitur elit ac ultricies vehicula. Donec tristique magna eget velit euismod, sed vulputate elit suscipit. Fusce facilisis eu odio sed feugiat. Praesent quis feugiat nisi.</p>
+		<p>Nunc elementum nisi non massa porttitor, ut pharetra mi vestibulum. Aenean sollicitudin, velit in commodo vulputate, est lectus dictum sapien, nec pellentesque neque tortor ut augue. Praesent sit amet arcu nisi. Praesent mattis, nunc eget sollicitudin imperdiet, lacus arcu vehicula orci, id auctor sapien sapien eu purus.</p>
+	</div>
+	<script>
+		window.addEventListener('scroll', () => {
+			const tick = document.getElementById('tick');
+			const boom = document.getElementById('boom');
+			const content = document.getElementById('limitedContent');
+			const contentOffset = content.getBoundingClientRect().top + window.scrollY;
+			if (window.pageYOffset > contentOffset - window.innerHeight * 0.8) {
+				tick.classList.add('visible');
+			}
+			if (window.pageYOffset > contentOffset - window.innerHeight * 0.6) {
+				tick.classList.remove('visible');
+				boom.classList.add('visible');
+			}
+			if (window.pageYOffset < contentOffset - window.innerHeight * 0.8) {
+				boom.classList.remove('visible');
+			}
+		});
+	</script>
+</body>
+</html>

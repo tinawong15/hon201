@@ -90,12 +90,12 @@
       </div>
       <div class="whitespace"></div>
       <div class="row">
-        <div class="col-lg-4 img four">
-          <img src="07.jpg" class="ifour" alt="" />
+        <div class="col-lg-8 img four">
+          <img src="03.jpeg" style="height: 300px; width:auto" class="ifour" alt="" />
         </div>
 
-        <div class="col-lg-3 txt text-3">
-          <h1>whitespace is like air.</h1>
+        <div class="col-lg-4 txt text-3">
+          <h1>lyricism offers social commentary and ties the film together</h1>
         </div>
       </div>
 
@@ -121,11 +121,11 @@
       </div>
     </div>
 
-    <div style="height: 1000px; background-color: red; font-size: 36px">
+    <!-- <div style="height: 1000px; background-color: red; font-size: 36px">
       Scroll Up and Down this page to see the parallax scrolling effect. This
       div is just here to enable scrolling. Tip: Try to remove the
       background-attachment property to remove the scrolling effect.
-    </div>
+    </div> -->
     <script type="text/javascript">
       var image = document.getElementsByClassName("ione");
       new simpleParallax(image, {
@@ -146,7 +146,8 @@
 
       var image = document.getElementsByClassName("ifour");
       new simpleParallax(image, {
-        scale: 1.6,
+        scale: 1.2,
+        orientation: "right",
       });
 
       var image = document.getElementsByClassName("ifive");

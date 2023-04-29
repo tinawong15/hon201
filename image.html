@@ -1,0 +1,30 @@
+<canvas id="canvas" width="1200" height="600"></canvas>
+<button id="download-btn">Download Image</button>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies" rel="stylesheet">
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const text = 'fear or love?';
+
+  // Set canvas background to transparent
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Set text font and size
+  ctx.font = 'bold 100px Rowdies';
+
+  // Set text color to white
+  ctx.fillStyle = '#fff';
+
+  // Draw the text at the center of the canvas
+  const textWidth = ctx.measureText(text).width;
+  ctx.fillText(text, canvas.width / 2 - textWidth / 2, canvas.height / 2);
+
+  // Download the canvas as a PNG image when the download button is clicked
+  const downloadBtn = document.getElementById('download-btn');
+  downloadBtn.addEventListener('click', function() {
+    const link = document.createElement('a');
+    link.download = 'text-image.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+</script>

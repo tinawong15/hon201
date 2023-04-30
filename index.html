@@ -128,9 +128,6 @@
         </div>
       </div>
       <div class="whitespace2"></div>
-      <audio>
-        <source src="audio.m4a" type="audio/x-m4a" controls autoplay />
-      </audio>
       <div class="row">
         <div class="col-lg-6 txt text-4">
           <h1>
@@ -157,6 +154,19 @@
             <img src="music.png" class="isix" alt="" />
           </div>
         </div>
+      </div>
+
+      <div class="container-fluid">
+            <div class="row" style="margin-top: -200px;">
+                  <div class="col-lg-5"></div>
+                  <div class="col-lg-7">
+                       <button type="button" class="btn btn-secondary btn-lg player" style="z-index:1; font-family: Monument Extended;">Play <img
+                        src="https://www.svgrepo.com/show/403999/play-button.svg"
+                        style="width: 20px; height: 20px; filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(162deg) brightness(105%) contrast(101%)"
+                      />
+                  </button>
+            </div>
+            </div>
       </div>
 
       <div class="row">
@@ -301,6 +311,22 @@
       }
 
       window.addEventListener("load", typewriter);
+
+      let a = new Audio("audio.m4a");
+      let audioButton =  document.getElementsByClassName("player")[0];
+      audioButton.addEventListener("click", () => {
+            // if (!a.paused) {a.pause(); a.currentTime = 0;}
+            // if (!a3.paused) {a3.pause(); a3.currentTime = 0;}
+            if(a.paused) {
+                  a.play();
+                  audioButton.innerHTML = "Pause <img src='https://www.svgrepo.com/show/511100/pause-circle.svg' style='width: 25px; height: 25px; filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(162deg) brightness(105%) contrast(101%)'/>"
+            }
+            else {
+                  a.pause();
+                  audioButton.innerHTML = "Play <img src='https://www.svgrepo.com/show/403999/play-button.svg' style='width: 20px; height: 20px; filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(162deg) brightness(105%) contrast(101%)'/>"
+            }
+
+      });
     </script>
   </body>
 </html>

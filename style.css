@@ -77,6 +77,11 @@ img {
 
 .six {
   top: -725px;
+  z-index: -1;
+}
+
+.player {
+      margin-top: -1450px;
 }
 
 .tick {
